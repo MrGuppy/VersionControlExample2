@@ -9,12 +9,22 @@ GameState::~GameState()
 {
 }
 
-void GameState::Draw(aie::Renderer2D* m_Renderer2D)
+void GameState::OnEnter(StateMachine* pMachine)
 {
 
 }
 
-void GameState::Updtate(float dt)
+void GameState::OnUpdate(float dt, StateMachine* pMachine)
+{
+
+}
+
+void GameState::OnExit(StateMachine* pMachine)
+{
+
+}
+
+void GameState::OnDraw(Renderer2D* m_2dRenderer)
 {
 
 }

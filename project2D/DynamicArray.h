@@ -27,6 +27,7 @@ public:
 
 		m_pData = new T[m_nCapacity];
 		memcpy(m_pData, other.m_pData, sizeof(T) * other.m_nCapacity);
+		delete m_pData;
 	}
 
 	void PushBack(T value)
