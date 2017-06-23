@@ -20,6 +20,7 @@ void SplashState::OnEnter(StateMachine* pMachine)
 
 void SplashState::OnUpdate(float deltaTime, StateMachine* pMachine)
 {
+	//change onupdate command 
 	m_fTimer += deltaTime;
 
 	if (m_fTimer <= 3.0f)
@@ -46,7 +47,7 @@ void SplashState::OnUpdate(float deltaTime, StateMachine* pMachine)
 void SplashState::OnDraw(Renderer2D* m_2dRenderer)
 {
 	m_2dRenderer->setRenderColour(1, 1, 1, m_fAlpha);
- 	m_2dRenderer->drawText(m_pFont, "AAAAAAAAAAAAAAAA", 500, 400);
+ 	m_2dRenderer->drawText(m_pFont, "Loading ...", 500, 400);
 }
 
 void SplashState::OnExit(StateMachine* pMachine)

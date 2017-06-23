@@ -39,14 +39,17 @@ void MenuState::OnUpdate(float deltaTime, StateMachine* pMachine)
 
 	if (m_fTimer >= 5.0f)
 	{
-		pMachine->PushState(2);
+		pMachine->PushState(3);
 	}
 }
 
 void MenuState::OnDraw(Renderer2D* m_2dRenderer)
 {
 	m_2dRenderer->setRenderColour(1, 1, 1, m_fAlpha);
-	m_2dRenderer->drawText(m_pFont, "qqqqqqqqqqqqq", 1250, 1250);
+	m_2dRenderer->drawText(m_pFont, "Start Game", 1250, 1250);
+	m_2dRenderer->drawText(m_pFont, "Options", 1250, 1250);
+	m_2dRenderer->drawText(m_pFont, "Exit", 1250, 1250);
+
 }
 
 void MenuState::OnExit(StateMachine* pMachine)

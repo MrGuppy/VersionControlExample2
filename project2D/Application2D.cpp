@@ -1,3 +1,4 @@
+// # defines that allow access to other classes
 #include "Application2D.h"
 #include "Texture.h"
 #include "StateMachine.h"
@@ -9,14 +10,24 @@
 #include "Font.h"
 using namespace aie;
 
+
+//---------------------------------------
+//
+//---------------------------------------
 Application2D::Application2D() 
 {
 }
 
+//---------------------------------------
+//
+//---------------------------------------
 Application2D::~Application2D() 
 {
 }
 
+//---------------------------------------
+//
+//---------------------------------------
 bool Application2D::startup() 
 {
 	_ASSERT(m_2dRenderer);
@@ -33,6 +44,7 @@ bool Application2D::startup()
 	m_pStateMachine->AddState(1, new MenuState());
 	m_pStateMachine->AddState(2, new GameState());
 
+
 	m_pStateMachine->PushState(0);
 
 	m_timer = 0;
@@ -40,22 +52,33 @@ bool Application2D::startup()
 	return true;
 }
 
+//---------------------------------------
+//
+//---------------------------------------
 void Application2D::shutdown() 
 {
 	delete m_2dRenderer;
 
-	for (int i = 0; i < 4; ++i)
-	{
+	//for (int i = 0; i < 4; ++i)
+	//{
 		delete m_pStateMachine;
-	}
+	//}
 }
 
+//---------------------------------------
+//
+//
+//
+//---------------------------------------
 void Application2D::update(float deltaTime) 
 {
 	m_timer += deltaTime;
 	m_pStateMachine->Update(deltaTime);
 }
 
+//---------------------------------------
+//
+//---------------------------------------
 void Application2D::draw() 
 {
 	clearScreen();

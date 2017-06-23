@@ -2,29 +2,58 @@
 
 GameState::GameState()
 {
+	m_pFont = new Font("./font/consolas.ttf", 25);
 }
 
 
 GameState::~GameState()
 {
+	delete m_pFont;
 }
 
 void GameState::OnEnter(StateMachine* pMachine)
 {
-
+	m_fAlpha = 0.0f;
+	m_fTimer = 0.0f;
 }
 
-void GameState::OnUpdate(float dt, StateMachine* pMachine)
+void GameState::OnUpdate(float deltaTime, StateMachine* pMachine)
 {
 
-}
+	m_fTimer += deltaTime;
 
-void GameState::OnExit(StateMachine* pMachine)
-{
+	if (m_fTimer <= 3.0f)
+	{
+		m_fAlpha += deltaTime;
+	}
 
+	if (m_fAlpha >= 1.0f)
+	{
+		m_fAlpha = 1.0f;
+	}
+
+	if (m_fTimer >= 3.0f)
+	{
+		m_fAlpha -= deltaTime;
+	}
+
+	if (m_fTimer >= 5.0f)
+	{
+		pMachine->PushState(2);
+	}
 }
 
 void GameState::OnDraw(Renderer2D* m_2dRenderer)
 {
-
+	m_2dRenderer->setRenderColour(1, 1, 1, m_fAlpha);
+	m_2dRenderer->drawText(m_pFont, "Start Game", 1250, 1250);
+	m_2dRenderer->drawText(m_pFont, "Options", 1250, 1250);
+	m_2dRenderer->drawText(m_pFont, "Exit", 1250, 1250);
 }
+
+void GameState::OnExit(StateMachine* pMachine)
+{
+	m_fAlpha = 0.0f;
+	m_fTimer = 0.0f;
+}
+

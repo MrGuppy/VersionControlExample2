@@ -61,7 +61,7 @@ public:
 
 	T PopBack()
 	{
-		if (m_nUsed > 0)
+		if (m_nUsed < 0)
 			return m_nullValue;
 
 		--m_nUsed;
